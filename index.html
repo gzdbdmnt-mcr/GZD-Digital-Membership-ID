@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Member Verification — GZD Badminton Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/card.css">
+</head>
+<body>
+
+  <div class="page-header">
+    <img src="https://gzdbadminton.club/assets/images/club-badge.png" alt="GZD Badminton">
+    <h1>Member Verification</h1>
+    <p>Scan a member's QR code, or enter their Member ID below</p>
+  </div>
+
+  <form id="lookup-form">
+    <input type="text" id="member-id-input" placeholder="Member ID" autocomplete="off">
+    <button type="submit">Check</button>
+  </form>
+
+  <div id="result"></div>
+
+  <p class="back-link"><a href="https://gzdbadminton.club" target="_blank" rel="noopener">← gzdbadminton.club</a></p>
+
+  <script src="js/verify.js"></script>
+</body>
+</html>

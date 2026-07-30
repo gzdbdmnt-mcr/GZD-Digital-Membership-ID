@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generate Member QR Code — Staff Tool</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/card.css">
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<style>
+  .tool-box{
+    background:var(--court-indigo-2);
+    border-radius:12px;
+    padding:24px;
+    width:100%;
+    max-width:360px;
+    margin-bottom:20px;
+  }
+  .tool-box label{
+    display:block;
+    font-family:'Space Mono',monospace;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    color:var(--line-grey);
+    margin-bottom:6px;
+  }
+  .tool-box input{
+    width:100%;
+    padding:10px 12px;
+    border-radius:6px;
+    border:2px solid var(--line-grey);
+    background:var(--court-indigo);
+    color:var(--shuttle-white);
+    font-family:'Space Mono',monospace;
+    margin-bottom:14px;
+  }
+  .tool-box input:focus{outline:none;border-color:var(--volt);}
+  .tool-box button{
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:6px;
+    background:var(--volt);
+    color:var(--court-indigo);
+    font-weight:700;
+    cursor:pointer;
+    font-family:'Manrope',sans-serif;
+  }
+  #qr-output{
+    background:#fff;
+    padding:16px;
+    border-radius:10px;
+    display:none;
+    text-align:center;
+  }
+  #qr-output.show{display:block;}
+  #qr-output p{color:var(--court-indigo);font-family:'Space Mono',monospace;font-size:0.8rem;margin:10px 0 0;}
+  #download-link{
+    display:inline-block;
+    margin-top:12px;
+    font-family:'Space Mono',monospace;
+    font-size:0.8rem;
+    color:var(--court-indigo);
+    text-decoration:underline;
+  }
+</style>
+</head>
+<body>
+
+  <div class="page-header">
+    <h1>Staff QR Generator</h1>
+    <p>Internal tool — not for members. Generates a scannable card link.</p>
+  </div>
+
+  <div class="tool-box">
+    <label for="base-url">Verification page base URL</label>
+    <input type="text" id="base-url" value="https://members.gzdbadminton.club/">
+    <label for="member-id">Member ID (must match the ID column in the sheet)</label>
+    <input type="text" id="member-id" placeholder="e.g. GZD-0001">
+    <button id="generate-btn">Generate QR Code</button>
+  </div>
+
+  <div id="qr-output">
+    <div id="qr-canvas"></div>
+    <p id="qr-url"></p>
+    <a id="download-link" download="member-qr.png">Download PNG</a>
+  </div>
+
+  <p class="back-link"><a href="../index.html">← Back to verification page</a></p>
+
+  <script>
+    const btn = document.getElementById('generate-btn');
+    const output = document.getElementById('qr-output');
+    const canvasHolder = document.getElementById('qr-canvas');
+    const urlLabel = document.getElementById('qr-url');
+    const downloadLink = document.getElementById('download-link');
+
+    btn.addEventListener('click', () => {
+      const base = document.getElementById('base-url').value.trim().replace(/\/?$/, '/');
+      const id = document.getElementById('member-id').value.trim();
+      if (!id) { alert('Enter a Member ID first.'); return; }
+
+      const url = base + '?id=' + encodeURIComponent(id);
+      canvasHolder.innerHTML = '';
+      new QRCode(canvasHolder, { text: url, width: 220, height: 220 });
+
+      urlLabel.textContent = url;
+      output.classList.add('show');
+
+      setTimeout(() => {
+        const img = canvasHolder.querySelector('img') || canvasHolder.querySelector('canvas');
+        if (img && img.toDataURL) {
+          downloadLink.href = img.toDataURL('image/png');
+          downloadLink.download = 'gzd-member-' + id + '.png';
+        } else if (img && img.src) {
+          downloadLink.href = img.src;
+          downloadLink.download = 'gzd-member-' + id + '.png';
+        }
+      }, 150);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+:root{
+  --court-indigo:#1B1F3B;
+  --court-indigo-2:#242A4F;
+  --shuttle-white:#F7F7F2;
+  --volt:#D4FF3D;
+  --smash-orange:#FF4D2E;
+  --line-grey:#8A8FA3;
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  min-height:100vh;
+  background:var(--court-indigo);
+  color:var(--shuttle-white);
+  font-family:'Manrope',sans-serif;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:32px 16px 60px;
+}
+
+.page-header{text-align:center;margin-bottom:28px;}
+.page-header img{height:56px;margin-bottom:12px;}
+.page-header h1{
+  font-family:'Anton',sans-serif;
+  text-transform:uppercase;
+  letter-spacing:0.03em;
+  font-size:1.6rem;
+  margin:0 0 6px;
+}
+.page-header p{color:var(--line-grey);font-family:'Space Mono',monospace;font-size:0.8rem;margin:0;}
+
+#lookup-form{
+  display:flex;
+  gap:8px;
+  margin-bottom:28px;
+  width:100%;
+  max-width:360px;
+}
+#member-id-input{
+  flex:1;
+  padding:10px 14px;
+  border-radius:6px;
+  border:2px solid var(--line-grey);
+  background:var(--court-indigo-2);
+  color:var(--shuttle-white);
+  font-family:'Space Mono',monospace;
+  font-size:0.9rem;
+}
+#member-id-input:focus{outline:none;border-color:var(--volt);}
+#lookup-form button{
+  padding:10px 18px;
+  border:none;
+  border-radius:6px;
+  background:var(--volt);
+  color:var(--court-indigo);
+  font-weight:700;
+  font-family:'Manrope',sans-serif;
+  cursor:pointer;
+}
+#lookup-form button:hover{filter:brightness(1.05);}
+
+#result{width:100%;max-width:360px;}
+
+.loading{text-align:center;color:var(--line-grey);font-family:'Space Mono',monospace;font-size:0.85rem;}
+
+.id-error{
+  background:var(--court-indigo-2);
+  border:2px solid var(--smash-orange);
+  border-radius:10px;
+  padding:20px;
+  text-align:center;
+  font-size:0.9rem;
+}
+
+.id-card{
+  background:var(--shuttle-white);
+  color:var(--court-indigo);
+  border-radius:16px;
+  padding:28px 24px 22px;
+  text-align:center;
+  box-shadow:0 12px 32px rgba(0,0,0,0.35);
+  border-top:6px solid var(--volt);
+}
+.id-card.is-inactive{border-top-color:var(--smash-orange);}
+
+.id-card-head{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:18px;}
+.id-card-logo{height:24px;}
+.id-card-brand{font-family:'Space Mono',monospace;font-size:0.72rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--line-grey);}
+
+.card-photo{
+  width:88px;height:88px;border-radius:50%;
+  object-fit:cover;margin:0 auto 14px;
+  border:3px solid var(--court-indigo);
+  display:block;
+}
+.card-photo-placeholder{
+  display:flex;align-items:center;justify-content:center;
+  background:var(--court-indigo);color:var(--volt);
+  font-family:'Anton',sans-serif;font-size:2rem;
+}
+
+.id-card-name{
+  font-family:'Anton',sans-serif;
+  text-transform:uppercase;
+  font-size:1.4rem;
+  margin:0 0 4px;
+}
+.id-card-id{
+  font-family:'Space Mono',monospace;
+  font-size:0.78rem;
+  color:var(--line-grey);
+  margin:0 0 10px;
+}
+.id-card-tier{
+  display:inline-block;
+  background:var(--court-indigo);
+  color:var(--volt);
+  font-family:'Space Mono',monospace;
+  font-size:0.72rem;
+  font-weight:700;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+  padding:4px 12px;
+  border-radius:20px;
+  margin-bottom:16px;
+}
+
+.id-card-status{
+  font-family:'Space Mono',monospace;
+  font-weight:700;
+  font-size:0.9rem;
+  letter-spacing:0.04em;
+  padding:10px;
+  border-radius:8px;
+  margin-bottom:18px;
+}
+.status-active{background:rgba(212,255,61,0.25);color:#4a5c00;}
+.status-inactive{background:rgba(255,77,46,0.15);color:var(--smash-orange);}
+
+.id-card-meta{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  text-align:left;
+  border-top:1px solid #ddd;
+  padding-top:14px;
+  margin-bottom:16px;
+}
+.id-card-meta div{flex:1;}
+.id-card-meta span{
+  display:block;
+  font-family:'Space Mono',monospace;
+  font-size:0.65rem;
+  text-transform:uppercase;
+  color:var(--line-grey);
+  margin-bottom:2px;
+}
+.id-card-meta strong{font-size:0.85rem;}
+
+.id-card-note{
+  font-size:0.72rem;
+  color:var(--line-grey);
+  line-height:1.5;
+  margin:0;
+}
+
+.back-link{
+  margin-top:24px;
+  font-family:'Space Mono',monospace;
+  font-size:0.8rem;
+  color:var(--line-grey);
+}
+.back-link a{color:var(--volt);text-decoration:none;}
