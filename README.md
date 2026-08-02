@@ -19,10 +19,10 @@ Create a sheet with this header row (order doesn't matter, names must match exac
 
 | MemberID | FullName | PhotoURL | Tier | JoinDate | ExpiryDate | Status |
 |---|---|---|---|---|---|---|
-| GZD-0001 | Jane Tan | https://.../jane.jpg | Standard | 2026-06-01 | 2026-12-31 | Active |
+| GZD0001 | Jane Tan | https://.../jane.jpg | Standard | 2026-06-01 | 2026-12-31 | Active |
 
 Notes:
-- `MemberID` — anything unique, e.g. `GZD-0001`. This is what goes in the QR link.
+- `MemberID` — anything unique, e.g. `GZD0001`. This is what goes in the QR link.
 - `PhotoURL` — optional. A public image link (e.g. a shared Google Drive image link
   converted to direct-view, or any image host). Leave blank to show initials instead.
 - `Tier` — optional label like "Standard" or "Premium".
